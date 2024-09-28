@@ -96,6 +96,8 @@
                 }
             };
     </script>
+    @include('sweetalert::alert')
+
 
 		<!-- JS here -->
         <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>

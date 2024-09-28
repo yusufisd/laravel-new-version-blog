@@ -20,12 +20,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="header__btn btn-sm d-none d-md-block">
-                                        <a href="contact.html" class="btn">Kayıt</a>
+                                        <a href="{{ route('register') }}" class="btn">Kayıt</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="header__btn btn-sm d-none d-md-block">
-                                        <a href="contact.html" class="btn">Giriş</a>
+                                        <a href="{{ route('login') }}" class="btn">Giriş</a>
                                     </div>
                                 </div>
                             </div>
