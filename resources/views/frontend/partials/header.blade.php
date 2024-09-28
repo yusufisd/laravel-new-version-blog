@@ -1,14 +1,16 @@
 <header>
     <div id="sticky-header" class="menu__area transparent-header">
-        <div class="container custom-container">
+        <div class="custom-container container">
             <div class="row">
                 <div class="col-12">
                     <div class="mobile__nav__toggler"><i class="fas fa-bars"></i></div>
                     <div class="menu__wrap">
                         <nav class="menu__nav">
                             <div class="logo">
-                                <a href="index.html" class="logo__black"><img src="assets/img/logo/logo_black.png" alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="assets/img/logo/logo_white.png" alt=""></a>
+                                <a href="index.html" class="logo__black"><img src="assets/img/logo/logo_black.png"
+                                        alt=""></a>
+                                <a href="index.html" class="logo__white"><img src="assets/img/logo/logo_white.png"
+                                        alt=""></a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
@@ -17,18 +19,34 @@
                                     <li><a href="about.html">Bloglar</a></li>
                                 </ul>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="header__btn btn-sm d-none d-md-block">
-                                        <a href="{{ route('register') }}" class="btn">Kayıt</a>
+                            @if (Auth::guard('authors')->user())
+                                <div class="row gap-3" style="width: 400px">
+                                    <div class="rounded-lg border col-md-4">
+                                        <p class="m-auto py-1">Bloglarım</p>
+                                    </div>
+                                    <div class="rounded-lg border col-md-4">
+                                        <p class="m-auto py-1">Kategorilerim</p>
+                                    </div>
+                                    <div class="off col-md-2">
+                                        <a href="{{ route('logout') }}">
+                                            <img style="width: 90px; margin:auto" src="{{ asset('assets/off.png') }}" alt="">
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="header__btn btn-sm d-none d-md-block">
-                                        <a href="{{ route('login') }}" class="btn">Giriş</a>
+                            @else
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="header__btn btn-sm d-none d-md-block">
+                                            <a href="{{ route('register') }}" class="btn">Kayıt</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="header__btn btn-sm d-none d-md-block">
+                                            <a href="{{ route('login') }}" class="btn">Giriş</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         </nav>
                     </div>
                     <!-- Mobile Menu  -->
@@ -36,8 +54,10 @@
                         <nav class="menu__box">
                             <div class="close__btn"><i class="fal fa-times"></i></div>
                             <div class="nav-logo">
-                                <a href="index.html" class="logo__black"><img src="assets/img/logo/logo_black.png" alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="assets/img/logo/logo_white.png" alt=""></a>
+                                <a href="index.html" class="logo__black"><img src="assets/img/logo/logo_black.png"
+                                        alt=""></a>
+                                <a href="index.html" class="logo__white"><img src="assets/img/logo/logo_white.png"
+                                        alt=""></a>
                             </div>
                             <div class="menu__outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->

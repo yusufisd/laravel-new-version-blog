@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthorsCreateRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\Authors;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use PharIo\Manifest\Author;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
@@ -23,8 +26,7 @@ class AuthController extends Controller
 
     public function registerSubmit(AuthorsCreateRequest $request)
     {
-        try{
-
+        try {
             $author = new Authors();
             $author->name = $request->name;
             $author->surname = $request->surname;
@@ -35,9 +37,36 @@ class AuthController extends Controller
 
             Alert::success('Kayıt Başarılı');
             return redirect()->route('login');
-        }catch(Exception $e)
-        {
+        } catch (Exception $e) {
+        }
+    }
 
+    public function loginSubmit(LoginRequest $request)
+    {
+        try {
+            if (Authors::where('email', $request->email)->first() != null) {
+                if (Auth::guard('authors')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                    Alert::success('Giriş Başarılı');
+                    return redirect()->route('index');
+                } else {
+                    Alert::error('Kullanıcı adı veya parola yanlış');
+                    return back();
+                }
+            } else {
+                Alert::error('Böyle bir kullanıcı yok');
+                return back();
+            }
+        } catch (Exception $e) {
+        }
+    }
+
+    public function logout()
+    {
+        try {
+            Auth::guard('authors')->logout();
+            Alert::success('Çıkış Başarılı');
+            return redirect()->route('index');
+        } catch (Exception $e) {
         }
     }
 }
