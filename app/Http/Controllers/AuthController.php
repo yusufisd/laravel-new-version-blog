@@ -34,8 +34,7 @@ class AuthController extends Controller
             $author->save();
 
             Alert::success('Kayıt Başarılı');
-            
-
+            return redirect()->route('login');
         }catch(Exception $e)
         {
 

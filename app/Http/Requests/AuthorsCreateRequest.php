@@ -25,7 +25,7 @@ class AuthorsCreateRequest extends FormRequest
             "name" => "required|min:3|max:20",
             "surname" => "required|min:3|max:20",
             "email" => "required|min:10|max:50|email",
-            "phone" => "required|min:10|max:11|integer",
+            "phone" => "required|min:10|max:11",
             "password" => "required|min:6|max:20",
             "confirmation" => "required|min:6|max:20|same:password",
         ];
