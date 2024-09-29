@@ -27,6 +27,25 @@
             margin-left: auto;
             margin-right: auto;
         }
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
     </style>
 </head>
 
@@ -48,13 +67,14 @@
     @include('frontend.partials.header')
     <!-- header-area-end -->
 
-    <!-- main-area -->
     @yield('content')
-    <!-- main-area-end -->
 
     <!-- Footer-area -->
     @include('frontend.partials.footer')
     <!-- Footer-area-end -->
+
+
+    @stack('script')
 
 
     <script type="importmap">

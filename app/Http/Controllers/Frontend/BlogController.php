@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class BlogController
 {
-
     public function index()
     {
         return view('frontend.pages.blog.index');

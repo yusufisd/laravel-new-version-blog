@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Requests\AuthorsCreateRequest;
 use App\Http\Requests\LoginRequest;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use PharIo\Manifest\Author;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AuthController extends Controller
+class AuthController
 {
     public function login()
     {

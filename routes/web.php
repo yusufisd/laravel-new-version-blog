@@ -1,19 +1,18 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BlogCategoryController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Backend\BlogCategoryController as BackendBlogCategoryController;
+use App\Http\Controllers\Frontend\AuthController;
+use App\Http\Controllers\Frontend\BlogCategoryController;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('frontend.pages.blog.create');
-});
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/','index')->name('index');
 });
 
+
+// AUTH FRONTEND İŞLEMLERİ
 Route::controller(AuthController::class)->group(function(){
     Route::get('giris-yap','login')->name('login');
     Route::post('giris-yap','loginSubmit')->name('loginSubmit');
@@ -22,6 +21,7 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('cikis-yap','logout')->name('logout');
 });
 
+// BLOG FRONTEND İŞLEMLERİ
 Route::controller(BlogController::class)->prefix('blog/')->name('blog.')->group(function(){
     Route::get('/','index')->name('index');
     Route::get('/liste','myBlogs')->name('myList');
@@ -30,10 +30,21 @@ Route::controller(BlogController::class)->prefix('blog/')->name('blog.')->group(
     Route::get('/ekle','create')->name('create');
 });
 
-
+// BLOG KATEGORİ FRONTEND İŞLEMLERİ
 Route::controller(BlogCategoryController::class)->prefix('blog-kategori/')->name('blogCategory.')->group(function(){
     Route::get('/','index')->name('index');
     Route::get('/liste','myBlogCategories')->name('myList');
     Route::get('/ekle','create')->name('create');
+    Route::get('/duzenle/{blogCategory}','edit')->name('edit');
+});
 
+// BACKEND İŞLEMLERİ
+Route::prefix('backend')->name('backend.')->group(function(){
+
+    // BLOG KATEGORİ BACKEND İŞLEMLERİ
+    Route::controller(BackendBlogCategoryController::class)->prefix('blog-kategori')->name('blogCategory.')->group(function(){
+        Route::post('/ekle','store')->name('store');
+        Route::post('/duzenle/{blogCategory?}','update')->name('update');
+        Route::get('/sil/{blogCategory?}','destroy')->name('destroy');
+    });
 });

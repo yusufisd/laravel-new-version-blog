@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 @section('content')
-<main>
+<main class="content">
 
     <!-- blog-area -->
     <section class="standard__blog mt-40">
