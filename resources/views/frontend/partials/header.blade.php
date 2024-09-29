@@ -14,19 +14,23 @@
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li><a href="index.html">Anasayfa</a></li>
-                                    <li><a href="about.html">Kategoriler</a></li>
-                                    <li><a href="about.html">Bloglar</a></li>
+                                    <li class="{{ Route::is('index') ? 'active' : '' }}"><a href="{{ route('index') }}">Anasayfa</a></li>
+                                    <li class="{{ Route::is('blogCategory.index') ? 'active' : '' }}"><a href="{{ route('blogCategory.index') }}">Kategoriler</a></li>
+                                    <li class="{{ Route::is('blog.index') ? 'active' : '' }}"><a href="{{ route('blog.index') }}">Bloglar</a></li>
                                 </ul>
                             </div>
                             @if (Auth::guard('authors')->user())
                                 <div class="row gap-3" style="width: 400px">
-                                    <div class="rounded-lg border col-md-4">
-                                        <p class="m-auto py-1">Bloglarım</p>
-                                    </div>
-                                    <div class="rounded-lg border col-md-4">
-                                        <p class="m-auto py-1">Kategorilerim</p>
-                                    </div>
+                                    <a href="{{ route('blog.myList') }}" class=" col-md-4">
+                                        <div class="border p-2" style="{{ Route::is('blog.myList') ? 'border-color: blue!important' : '' }}" >
+                                            <p class="m-auto">Bloglarım</p>
+                                        </div>
+                                    </a>
+                                    <a href="{{ route('blogCategory.myList') }}" class="col-md-5">
+                                        <div class="border p-2" style="{{ Route::is('blogCategory.myList') ? 'border-color: blue!important' : '' }}">
+                                            <p class="m-auto">Kategorilerim</p>
+                                        </div>
+                                    </a>
                                     <div class="off col-md-2">
                                         <a href="{{ route('logout') }}">
                                             <img style="width: 90px; margin:auto" src="{{ asset('assets/off.png') }}" alt="">

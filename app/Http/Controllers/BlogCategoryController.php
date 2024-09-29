@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class BlogCategoryController extends Controller
 {
-
     public function index()
     {
-        return view('frontend.pages.blog.index');
+        return view('frontend.pages.blogCategories.index');
     }
 
-    public function myBlogs()
+    public function myBlogCategories()
     {
-        return view('frontend.pages.blog.my_blogs');
+        return view('frontend.pages.blogCategories.my_blog_categories');
     }
 
     public function detail()
@@ -24,7 +23,7 @@ class BlogController extends Controller
 
     public function create()
     {
-        return view('frontend.pages.blog.create');
+        return view('frontend.pages.blogCategories.create');
     }
 
     public function edit()

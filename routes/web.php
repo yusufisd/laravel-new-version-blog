@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,17 @@ Route::controller(AuthController::class)->group(function(){
 });
 
 Route::controller(BlogController::class)->prefix('blog/')->name('blog.')->group(function(){
-    Route::get('/liste','myBlogs')->name('list');
+    Route::get('/','index')->name('index');
+    Route::get('/liste','myBlogs')->name('myList');
     Route::get('/detay','detail')->name('detail');
     Route::get('/duzenle','edit')->name('edit');
+    Route::get('/ekle','create')->name('create');
+});
+
+
+Route::controller(BlogCategoryController::class)->prefix('blog-kategori/')->name('blogCategory.')->group(function(){
+    Route::get('/','index')->name('index');
+    Route::get('/liste','myBlogCategories')->name('myList');
+    Route::get('/ekle','create')->name('create');
+
 });

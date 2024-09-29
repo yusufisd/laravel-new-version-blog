@@ -5,11 +5,6 @@
     <!-- blog-area -->
     <section class="standard__blog mt-40">
         <div class="container">
-
-            <a href="{{ route('blog.create') }}">
-                <button class="btn btn-sm btn-info mb-40"> Blog Ekle</button>
-            </a>
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
@@ -18,7 +13,6 @@
                             <div class="standard__blog__post">
                                 <div class="standard__blog__thumb">
                                     <a href="{{ route('blog.detail') }}"><img src="{{ asset('assets/img/blog/blog_thumb01.jpg') }}" alt=""></a>
-                                    <a href="{{ route('blog.edit') }}" class="blog__link"><i class="far fa-edit"></i></a>
                                 </div>
                                 <div class="standard__blog__content">
                                     <h2 class="title"><a href="{{ route('blog.detail') }}">Best website traffice Booster with great tools.</a></h2>
