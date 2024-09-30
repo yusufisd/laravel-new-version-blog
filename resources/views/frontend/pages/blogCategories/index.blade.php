@@ -7,29 +7,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row">
+                    <div class="row" style="margin-top:200px">
+
+                        @foreach ($categories as $category)
+
 
                         <div class="col-md-4 mb-40">
                             <div class="standard__blog__post">
                                 <div class="standard__blog__content">
-                                    <h2 class="title"><a href="{{ route('blog.detail') }}">Best website traffice </a></h2>
+                                    <h2 class="title"><a href="{{ route('blog.detail') }}">{{ $category->title }}</a></h2>
                                 </div>
                             </div>
                         </div>
+
+                        @endforeach
+
                         
                     </div>
                     
-                    <div class="pagination-wrap">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-left"></i></a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-right"></i></a></li>
-                            </ul>
-                        </nav>
+                    <div class="w-full">
+                        <div class="m-auto" style="width:100px">
+                            {{ $categories->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                 </div>
                

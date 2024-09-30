@@ -63,9 +63,12 @@ class AuthController
     public function logout()
     {
         try {
-            Auth::guard('authors')->logout();
-            Alert::success('Çıkış Başarılı');
-            return redirect()->route('index');
+            $logout = Auth::guard('authors')->logout();
+            if($logout)
+            {
+                Alert::success('Çıkış Başarılı');
+                return redirect()->route('index');
+            }
         } catch (Exception $e) {
         }
     }

@@ -18,7 +18,7 @@
                                 <div class="col-md-4 mb-40">
                                     <div class="standard__blog__post">
                                         <div class="standard__blog__thumb">
-                                            <a href="{{ route('blog.detail') }}"><img src="{{ $blog->image }}"
+                                            <a href="{{ route('blog.detail',$blog) }}"><img src="{{ $blog->image }}"
                                                     style="width: 100%;height:200px;object-fit:cover" alt=""></a>
                                             <a href="{{ route('blog.edit', $blog) }}" class="blog__link"><i
                                                     class="far fa-edit"></i></a>
@@ -27,7 +27,7 @@
                                                     class="far fa-trash-alt" style="color: red;"></i></a>
                                         </div>
                                         <div class="standard__blog__content">
-                                            <h2 class="title"><a href="{{ route('blog.detail') }}">{{ $blog->title }}</a>
+                                            <h2 class="title"><a href="{{ route('blog.detail',$blog) }}">{{ $blog->title }}</a>
                                             </h2>
                                         </div>
                                     </div>

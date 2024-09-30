@@ -26,7 +26,7 @@ Route::controller(AuthController::class)->group(function(){
 Route::controller(BlogController::class)->prefix('blog/')->name('blog.')->group(function(){
     Route::get('/','index')->name('index');
     Route::get('/liste','myBlogs')->name('myList');
-    Route::get('/detay','detail')->name('detail');
+    Route::get('/detay{blog?}','detail')->name('detail');
     Route::get('/duzenle/{blog}','edit')->name('edit');
     Route::get('/ekle','create')->name('create');
 });
@@ -37,6 +37,8 @@ Route::controller(BlogCategoryController::class)->prefix('blog-kategori/')->name
     Route::get('/liste','myBlogCategories')->name('myList');
     Route::get('/ekle','create')->name('create');
     Route::get('/duzenle/{blogCategory}','edit')->name('edit');
+    Route::get('/detay/{id?}','detail')->name('detail');
+
 });
 
 // BACKEND İŞLEMLERİ

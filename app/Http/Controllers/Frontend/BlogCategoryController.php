@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Blog;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,8 @@ class BlogCategoryController
 {
     public function index()
     {
-        return view('frontend.pages.blogCategories.index');
+        $categories = BlogCategory::orderBy('title','asc')->paginate(3);
+        return view('frontend.pages.blogCategories.index',compact('categories'));
     }
 
     public function myBlogCategories()
@@ -19,9 +21,10 @@ class BlogCategoryController
         return view('frontend.pages.blogCategories.my_blog_categories',compact('categories'));
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('frontend.pages.blogCategories.detail');
+        $blogs = Blog::where('category_id',$id)->paginate(3);
+        return view('frontend.pages.blogCategories.detail',compact('blogs'));
     }
 
     public function create()
