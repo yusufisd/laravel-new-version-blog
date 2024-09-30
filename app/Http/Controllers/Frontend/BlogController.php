@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController
 {
@@ -13,7 +16,8 @@ class BlogController
 
     public function myBlogs()
     {
-        return view('frontend.pages.blog.my_blogs');
+        $blogs = Blog::where('author_id',Auth::guard('authors')->user()->id)->paginate(3);
+        return view('frontend.pages.blog.my_blogs',compact('blogs'));
     }
 
     public function detail()
@@ -23,11 +27,13 @@ class BlogController
 
     public function create()
     {
-        return view('frontend.pages.blog.create');
+        $categories = BlogCategory::get();
+        return view('frontend.pages.blog.create',compact('categories'));
     }
 
-    public function edit()
+    public function edit(Blog $blog)
     {
-        return view('frontend.pages.blog.edit');
+        $categories = BlogCategory::get();
+        return view('frontend.pages.blog.edit',compact('blog','categories'));
     }
 }

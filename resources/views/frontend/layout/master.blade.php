@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/default.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/responsive.css') }}">
-    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.1/ckeditor5.css">
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.1/ckeditor5.css" />
     <style>
         .main-container {
             width: 795px;
@@ -45,6 +45,9 @@
             color: white;
             text-align: center;
             padding: 20px 0;
+        }
+        .ck-editor__editable_inline {
+            min-height: 500px; /* Yaklaşık 30 satıra denk gelen bir yükseklik */
         }
     </style>
 </head>
@@ -92,12 +95,13 @@
             Paragraph,
             Bold,
             Italic,
-            Font
+            Font,
         } from 'ckeditor5';
 
         ClassicEditor
             .create(document.querySelector('#editor'), {
-                plugins: [Essentials, Paragraph, Bold, Italic, Font],
+                plugins: [Essentials, Paragraph, Bold, Italic, Font,
+                ],
                 toolbar: [
                     'undo', 'redo', '|', 'bold', 'italic', '|',
                     'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
@@ -109,13 +113,6 @@
             .catch(error => {
                 console.error(error);
             });
-    </script>
-    <script>
-        window.onload = function() {
-            if (window.location.protocol === "file:") {
-                alert("This sample requires an HTTP server. Please serve this file with a web server.");
-            }
-        };
     </script>
     @include('sweetalert::alert')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

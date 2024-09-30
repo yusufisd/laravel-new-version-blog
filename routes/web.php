@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BlogCategoryController as BackendBlogCategoryController;
+use App\Http\Controllers\Backend\BlogController as BackendBlogController;
 use App\Http\Controllers\Frontend\AuthController;
 use App\Http\Controllers\Frontend\BlogCategoryController;
 use App\Http\Controllers\Frontend\BlogController;
@@ -26,7 +27,7 @@ Route::controller(BlogController::class)->prefix('blog/')->name('blog.')->group(
     Route::get('/','index')->name('index');
     Route::get('/liste','myBlogs')->name('myList');
     Route::get('/detay','detail')->name('detail');
-    Route::get('/duzenle','edit')->name('edit');
+    Route::get('/duzenle/{blog}','edit')->name('edit');
     Route::get('/ekle','create')->name('create');
 });
 
@@ -46,5 +47,12 @@ Route::prefix('backend')->name('backend.')->group(function(){
         Route::post('/ekle','store')->name('store');
         Route::post('/duzenle/{blogCategory?}','update')->name('update');
         Route::get('/sil/{blogCategory?}','destroy')->name('destroy');
+    });
+
+    // BLOG BACKEND İŞLEMLERİ
+    Route::controller(BackendBlogController::class)->prefix('blog')->name('blog.')->group(function(){
+        Route::post('/ekle','store')->name('store');
+        Route::post('/duzenle/{blog?}','update')->name('update');
+        Route::get('/sil/{blog?}','destroy')->name('destroy');
     });
 });

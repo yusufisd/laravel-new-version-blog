@@ -3,26 +3,35 @@
 
 
 <main style="margin-top: 350px">
-    <!-- contact-area -->
+    @if($errors->any())
+            @foreach ($errors->all() as $e)
+                {{ $e }}
+            @endforeach
+        @endif
     <div class="contact-area">
         <div class="container">
-            <form action="#" class="contact__form">
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="text" placeholder="Enter your name*">
+            <form action="{{ route('backend.blog.update',$blog) }}" method="POST" enctype="multipart/form-data" class="contact__form">
+                @csrf
+                <div class="row mb-40">
+                    <div class="col-md-12">
+                        <input type="text" value="{{ $blog->title }}" name="title" placeholder="Başlık">
                     </div>
-                    <div class="col-md-6">
-                        <input type="email" placeholder="Enter your mail*">
+                    <div class="col-md-12 mb-30">
+                        <select name="category_id" class="form-select" id="">
+                            <option value="">Kategori seçin</option>
+                            @foreach ($categories as $item)
+                                <option {{ $blog->category_id == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->title }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" placeholder="Enter your subject*">
+                    <div class="col-md-12">
+                        <input type="file" class="form-control" name="image" id="">
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" placeholder="Your Budget*">
+                    <div class="col-md-12">
+                        <textarea name="content" class="editor" id="editor" cols="30" rows="30">{!! $blog->content !!}</textarea>
                     </div>
                 </div>
-                <textarea name="message" id="editor" placeholder="Enter your massage*"></textarea>
-                <button type="submit" class="btn">send massage</button>
+                <button type="submit" class="btn">Kaydet</button>
             </form>
         </div>
     </div>
@@ -31,3 +40,15 @@
 
 </main>
 @endsection
+@push('script')
+<script>
+    ClassicEditor
+    .create(document.querySelector('#editor'))
+    .then(editor => {
+        console.log(editor);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+</script>
+@endpush
