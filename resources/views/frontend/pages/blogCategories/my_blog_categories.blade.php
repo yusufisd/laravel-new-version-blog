@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="standard__blog__content">
                                             <h2 class="title"><a
-                                                    href="{{ route('blog.detail') }}">{{ $category->title }}</a></h2>
+                                                    href="{{ route('blogCategory.detail',$category) }}">{{ $category->title }}</a></h2>
                                         </div>
                                     </div>
                                 </div>

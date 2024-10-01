@@ -18,7 +18,7 @@
                                     <a href="{{ route('blog.detail',$blog) }}"><img src="{{ $blog->image }}" style="width: 100%;height:200px;object-fit:cover" alt=""></a>
                                 </div>
                                 <div class="standard__blog__content">
-                                    <h2 class="title"><a href="{{ route('blog.detail') }}">Best website traffice Booster with great tools.</a></h2>
+                                    <h2 class="title"><a href="{{ route('blog.detail',$blog) }}">Best website traffice Booster with great tools.</a></h2>
                                 </div>
                             </div>
                         </div>
