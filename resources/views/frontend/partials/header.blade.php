@@ -7,9 +7,9 @@
                     <div class="menu__wrap">
                         <nav class="menu__nav">
                             <div class="logo">
-                                <a href="index.html" class="logo__black"><img src="assets/img/logo/logo_black.png"
+                                <a href="{{ route('index') }}" class="logo__black"><img src="{{ asset('assets/img/logo/logo_black.png') }}"
                                         alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="assets/img/logo/logo_white.png"
+                                <a href="{{ route('index') }}" class="logo__white"><img src="{{ asset('assets/img/logo/logo_white.png') }}"
                                         alt=""></a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
