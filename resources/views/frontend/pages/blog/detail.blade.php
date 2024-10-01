@@ -13,7 +13,7 @@
                         <div class="blog__details__content services__details__content">
                             <ul class="blog__post__meta">
                                 <li><i class="fal fa-calendar-alt"></i>{{ $blog->created_at->translatedFormat('d M Y') }}</li>
-                                <li><a style="text-transform: capitalize" href="#"><span style="font: bold!important">Kategori:</span> {{ $blog->category->title }}</a></li>
+                                <li><a style="text-transform: capitalize" href="{{ route('blogCategory.detail',$blog->category) }}"><span style="font: bold!important">Kategori:</span> {{ $blog->category->title }}</a></li>
                             </ul>
                             <h2 class="title">{{ $blog->title }}</h2>
                             <div>
@@ -32,7 +32,7 @@
                                                 <a href="{{ route('blog.detail',$previousBlog) }}"><img src="{{ $previousBlog->image }}" style="width: 104px;height:68px;object-fit:cover"  alt=""></a>
                                             </div>
                                             <div class="blog__next__prev__content">
-                                                <h5 class="title"><a href="blog-details.html">{{ $previousBlog->title }}</a></h5>
+                                                <h5 class="title"><a href="{{ route('blog.detail',$previousBlog) }}">{{ $previousBlog->title }}</a></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -72,10 +72,10 @@
 
                                 <li class="rc__post__item">
                                     <div class="rc__post__thumb">
-                                        <a href="blog-details.html"><img src="{{ $blog->image }}" style="width: 90px;height:90px; object-fit:cover" alt=""></a>
+                                        <a href="{{ route('blog.detail',$blog) }}"><img src="{{ $blog->image }}" style="width: 90px;height:90px; object-fit:cover" alt=""></a>
                                     </div>
                                     <div class="rc__post__content">
-                                        <h5 class="title"><a href="blog-details.html">{{ $blog->title }}</a></h5>
+                                        <h5 class="title"><a href="{{ route('blog.detail',$blog) }}">{{ $blog->title }}</a></h5>
                                         <span class="post-date"><i class="fal fa-calendar-alt"></i>{{ $blog->created_at->translatedFormat('d M Y') }}</span>
                                     </div>
                                 </li>

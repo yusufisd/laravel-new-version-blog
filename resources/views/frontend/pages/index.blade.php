@@ -8,12 +8,11 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="row">
-
                             @foreach ($blogs as $blog)
                                 <div class="col-md-6 mb-80">
                                     <div class="standard__blog__post">
                                         <div class="mb-2">
-                                            <a href="{{ route('blog.detail',$blog) }}"><img src="{{ $blog->image }}"
+                                            <a href="{{ route('blog.detail', $blog) }}"><img src="{{ $blog->image }}"
                                                     style="width: 100%;height:220px;object-fit:cover" alt=""></a>
                                         </div>
                                         <div class="standard__blog__content">
@@ -23,15 +22,12 @@
                                                 </div>
                                                 <div class="col-md-6"> test</div>
                                             </div>
-                                            <h2 class="title"><a href="{{ route('blog.detail',$blog) }}">{{ $blog->title }}</a></h2>
-
+                                            <h2 class="title"><a
+                                                    href="{{ route('blog.detail', $blog) }}">{{ $blog->title }}</a></h2>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-
-
-
                         </div>
 
                         <div class="w-full">
@@ -48,7 +44,8 @@
                                     <h4 class="widget-title">Kategoriler</h4>
                                     <ul class="sidebar__cat">
                                         @foreach ($categories as $category)
-                                            <li class="sidebar__cat__item"><a href="{{ route('blogCategory.detail',$category->id) }}">{{ $category->title }}</a>
+                                            <li class="sidebar__cat__item"><a
+                                                    href="{{ route('blogCategory.detail', $category->id) }}">{{ $category->title }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -58,10 +55,11 @@
                             <aside class="blog__sidebar">
                                 <div class="widget">
                                     <h4 class="widget-title">Abone Ol</h4>
-                                    <form action="" autocomplete="off" method="POST">
+                                    <form action="{{ route('subscribe') }}" autocomplete="off" method="POST">
                                         @csrf
                                         <div class="row">
-                                            <input type="email" class="form-control mb-20"  name="email" placeholder="Email">
+                                            <input type="email" class="form-control mb-20" required name="email"
+                                                placeholder="Email">
                                             <input type="submit" class="btn btn-primary" name="" id="">
                                         </div>
                                     </form>
@@ -75,7 +73,6 @@
             </div>
         </section>
         <!-- blog-area-end -->
-
-
     </main>
 @endsection
+

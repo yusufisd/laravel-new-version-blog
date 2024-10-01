@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\BlogStoreRequest;
 use App\Http\Requests\BlogUpdateRequest;
+use App\Mail\PostMail;
 use App\Models\Blog;
+use App\Models\Subscribers;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use Intervention\Image\Facades\Image;
 
@@ -29,10 +32,19 @@ class BlogController
             $blog->author_id = Auth::guard('authors')->user()->id;
             $blog->save();
 
+            if($blog)
+            {
+                $emails = Subscribers::select('email')->pluck('email')->toArray();
+                foreach($emails as $key => $email)
+                {
+                    Mail::to($emails)->send(new PostMail($blog));
+                }
+            }
             Alert::success('Blog başarıyla eklendi');
             return redirect()->route('blog.myList');
         }catch(Exception $e)
         {
+            dd($e);
             Alert::error('Hata',$e);
             return back();
         }

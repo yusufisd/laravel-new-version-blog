@@ -15,7 +15,7 @@
                         <div class="col-md-4 mb-40">
                             <div class="standard__blog__post">
                                 <div class="standard__blog__content">
-                                    <h2 class="title"><a href="{{ route('blog.detail') }}">{{ $category->title }}</a></h2>
+                                    <h2 class="title"><a href="{{ route('blogCategory.detail',$category) }}">{{ $category->title }}</a></h2>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 @extends('frontend.layout.master')
 @section('content')
-    <div style="margin-top: 400px;  ">
+    <div style="margin-top: 400px; " class="content">
         <div style="width: 400px; margin:auto">
             <form action="{{ route('loginSubmit') }}" method="POST" class="contact__form">
                 @csrf
